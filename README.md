@@ -1,4 +1,4 @@
-# DL - Text pre-preprocessing modules for deep learning.
+# DL - Text : Pre-preprocessing modules for deep learning (2 minute deep learning).
 This repository provide you with modules for pre-processing the textual data. There are many additional functionilities including the implemntation of evaluation metrics such as MAP, MRR, AP@k, etc.
 
 ### Usage - Prepare the data for training a deep model (DNN, CNN, RNN, LSTM).
