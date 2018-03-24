@@ -103,7 +103,7 @@ data_r = ['positive words are good, better, best, etc.',
 labels = [1,0,1,0]
 ```
 
-Let's define a model for the these type of tasks
+Let's define a model for these type of tasks
 
 ``` python
 
