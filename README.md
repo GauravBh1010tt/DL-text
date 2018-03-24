@@ -85,7 +85,7 @@ model = model_cnn(dimx = 10, embedding_matrix = embedding_matrix)
 model.fit(data_inp, labels)
 ```
 
-##### 5. Creating two channel models
+#### 5. Creating two channel models
 These type of models use two data streams. This can be used to NLP tasks such as question answering, sentence similarity computation, etc. The data looks like this
 
 ```python
