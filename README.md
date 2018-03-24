@@ -76,6 +76,7 @@ def model_cnn(dimx, embedding_matrix):
 data = ['this is a positve sentence', 'this is a negative sentence', 'yet another positve sentence', 'the last one is negative']
 labels = [1,0,1,0]
 
+wordVec_model = dl.loadGloveModel('path_of_the_embeddings/glove.6B.50d.txt')
 data_inp, embedding_matrix = dl.process_data(sent_l = data, wordVec_model = wordVec_model, dimx = 10)
 
 model = model_dnn(dimx = 10, embedding_matrix = embedding_matrix)
