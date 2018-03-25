@@ -1,5 +1,8 @@
-# DL - Text : Pre-preprocessing modules for deep learning.
-This repository provide you with modules for pre-processing the textual data. There are many additional functionilities including the implementation of evaluation metrics such as MAP, MRR, AP@k, etc.
+# DL - Text pre-preprocessing modules for deep learning.
+This repository provide you with modules for pre-processing the textual data. There are many additional functionilities which are as follows:
+- Preprocess data for problems like sentiment analysis, sentence contextual similarity, question answering, etc.
+- Compute lexical and semantic hand-crafted features like words overlap, n-gram overlap, td-idf, count features, etc.
+- Implementation of evaluation metrics such as MAP, MRR, AP@k, BM25 etc.
 
 ### Usage - Prepare the data for training a deep model (DNN, CNN, RNN, LSTM).
 #### 1. The data and labels looks like this:
@@ -76,7 +79,6 @@ def model_cnn(dimx, embedding_matrix):
 data = ['this is a positve sentence', 'this is a negative sentence', 'yet another positve sentence', 'the last one is negative']
 labels = [1,0,1,0]
 
-wordVec_model = dl.loadGloveModel('path_of_the_embeddings/glove.6B.50d.txt')
 data_inp, embedding_matrix = dl.process_data(sent_l = data, wordVec_model = wordVec_model, dimx = 10)
 
 model = model_dnn(dimx = 10, embedding_matrix = embedding_matrix)
@@ -103,7 +105,7 @@ data_r = ['positive words are good, better, best, etc.',
 labels = [1,0,1,0]
 ```
 
-Let's define a model for these type of tasks
+Let's define a model for the these type of tasks
 
 ``` python
 
@@ -131,8 +133,7 @@ def model_cnn2(dimx, dimy, embedding_matrix):
 
 ```python
 
-data_inp_l, data_inp_r, embedding_matrix = dl.process_data(sent_l = data_l, sent_r = data_r, 
-                                                           wordVec_model = wordVec_model, dimx = 10, dimy = 10)
+data_inp_l, data_inp_r, embedding_matrix = dl.process_data(sent_l = data_l, sent_r = data_r, wordVec_model = wordVec_model, dimx = 10, dimy = 10)
 
 model = model_cnn2(dimx = 10, dimy = 10, embedding_matrix = embedding_matrix)
 model.fit([data_inp_l, data_inp_r], labels)
