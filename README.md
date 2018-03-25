@@ -99,7 +99,7 @@ data_r = ['positive words are good, better, best, etc.', 'negative words are bad
          
 labels = [1,0,1,0]
 ```
-
+Here, `data_l` and `data_r` can be two sentences for computing sentence similarity, question-answer pairs for question answering problem, etc.
 Let's define a model for the these type of tasks
 
 ``` python
