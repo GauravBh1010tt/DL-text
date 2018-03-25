@@ -1,6 +1,6 @@
 # DL - Text pre-preprocessing modules for deep learning.
-This repository provide you with modules for pre-processing the textual data. There are many additional functionilities which are as follows:
-- Preprocess data for problems like sentiment analysis, sentence contextual similarity, question answering, etc.
+This repository consists of modules for pre-processing the textual data. There are many additional functionilities which are as follows:
+- Preparing data for problems like sentiment analysis, sentence contextual similarity, question answering, etc.
 - Compute lexical and semantic hand-crafted features like words overlap, n-gram overlap, td-idf, count features, etc.
 - Implementation of evaluation metrics such as MAP, MRR, AP@k, BM25 etc.
 
