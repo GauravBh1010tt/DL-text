@@ -7,10 +7,8 @@ This repository provide you with modules for pre-processing the textual data. Th
 ### Usage - Prepare the data for training a deep model (DNN, CNN, RNN, LSTM).
 #### 1. The data and labels looks like this:
 ```python
-data = ['this is a positve sentence',
-        'this is a negative sentence',
-        'yet another positve sentence',
-        'the last one is negative']
+data = ['this is a positve sentence','this is a negative sentence',
+        'yet another positve sentence','the last one is negative']
 labels = [1,0,1,0]
 ```
 This type of data is commonly used in sentiment analysis type problems.
@@ -93,16 +91,12 @@ model.fit(data_inp, labels)
 These type of models use two data streams. This can be used to NLP tasks such as question answering, sentence similarity computation, etc. The data looks like this
 
 ```python
-data_l = ['this is a positve sentence', 
-          'this is a negative sentence', 
-          'yet another positve sentence', 
-          'the last one is negative']
+data_l = ['this is a positve sentence','this is a negative sentence', 
+          'yet another positve sentence', 'the last one is negative']
           
-data_r = ['positive words are good, better, best, etc.', 
-          'negative words are bad, sad, etc.', 
-          'feeling good', 
-          'sooo depressed.']
-          
+data_r = ['positive words are good, better, best, etc.', 'negative words are bad, sad, etc.', 
+          'feeling good', 'sooo depressed.']
+         
 labels = [1,0,1,0]
 ```
 
