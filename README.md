@@ -75,7 +75,7 @@ def model_cnn(dimx, embedding_matrix):
 #### 4. Training the models
 
 ```python
-data = ['this is a positve sentence', 'this is a negative sentence', 'yet another positve sentence', 'the last one is negative']
+data = ['this is a positive sentence', 'this is a negative sentence', 'yet another positive sentence', 'the last one is negative']
 labels = [1,0,1,0]
 
 data_inp, embedding_matrix = dl.process_data(sent_l = data, wordVec_model = wordVec_model, dimx = 10)
@@ -91,8 +91,8 @@ model.fit(data_inp, labels)
 These type of models use two data streams. This can be used to NLP tasks such as question answering, sentence similarity computation, etc. The data looks like this
 
 ```python
-data_l = ['this is a positve sentence','this is a negative sentence', 
-          'yet another positve sentence', 'the last one is negative']
+data_l = ['this is a positive sentence','this is a negative sentence', 
+          'yet another positive sentence', 'the last one is negative']
           
 data_r = ['positive words are good, better, best, etc.', 'negative words are bad, sad, etc.', 
           'feeling good', 'sooo depressed.']
