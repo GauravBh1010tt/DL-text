@@ -40,7 +40,8 @@ import gensim
 wordVec_model = dl.loadGloveModel('path_of_the_embeddings/glove.6B.50d.txt')
 
 # for 300 dim word2vec embeddings use: 
-wordVec_model = gensim.models.KeyedVectors.load_word2vec_format("path/GoogleNews-vectors-negative300.bin.gz",binary=True)
+wordVec_model = gensim.models.KeyedVectors.load_word2vec_format("path/GoogleNews-vectors-negative300.bin.gz",
+                                                                 binary=True)
 
 data_inp, embedding_matrix = dl.process_data(sent_l = data, wordVec_model = wordVec_model, dimx = 10)
 ```
@@ -133,7 +134,8 @@ def model_cnn2(dimx, dimy, embedding_matrix):
 
 ```python
 
-data_inp_l, data_inp_r, embedding_matrix = dl.process_data(sent_l = data_l, sent_r = data_r, wordVec_model = wordVec_model, dimx = 10, dimy = 10)
+data_inp_l, data_inp_r, embedding_matrix = dl.process_data(sent_l = data_l, sent_r = data_r, 
+                                                           wordVec_model = wordVec_model, dimx = 10, dimy = 10)
 
 model = model_cnn2(dimx = 10, dimy = 10, embedding_matrix = embedding_matrix)
 model.fit([data_inp_l, data_inp_r], labels)
