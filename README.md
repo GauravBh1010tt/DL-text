@@ -180,37 +180,14 @@ Functions currently present in the `lex_sem_ft` are:
 ```
 Functions currently present in the `rd_ft` are:
 - CPW(text) : Average Character Per Word In A Sentence(Returns Float)
-- #Number Of Words Per Sentence(Returns Integer):
-def WPS(text):
-
-#Average Number Of Syllables In Sentence(Returns Float):
-def SPW(text):
-
-#Long Words In A Sentence(Returns Integer):
-def LWPS(text):
-
-#Fraction Of Long Words In A Sentence(Returns Float):
-def LWR(text):
-
-#Number Of Complex Word Per Sentence(Returns Float):
-def CWPS(text):
-
-#Dale-Chall Readability Index(Returns Float):
-def DaleChall(text):
-
-#Edit Distance Value For Two String(Returns Integer):
-def ED(s1, s2):
-
-#Get A List Of Nouns From String(Returns List Of Sting):
-def nouns(text):
-
-#Average Edit Distance Value For Two String And The Average Edit Distance Between The Nouns Present In Them(Returns Float)
-def EditDist_Dist(t1,t2):
-
-def EditDist_Noun(sent_A, sent_B):
-
-#Longest Common Subsequence(Returns Integer):
-def LCS_Len(a, b):
-
-#Length Of Longest Common Subsequence(Returns Integer):
-def LCW(t1, t2):
+- WPS(text) : Number Of Words Per Sentence(Returns Integer)
+- SPW(text) : Average Number Of Syllables In Sentence(Returns Float)
+- LWPS(text) : Long Words In A Sentence(Returns Integer)
+- LWR(text) : Fraction Of Long Words In A Sentence(Returns Float)
+- CWPS(text) : Number Of Complex Word Per Sentence(Returns Float)
+- DaleChall(text) : Dale-Chall Readability Index(Returns Float)
+- ED(s1, s2) : Edit Distance Value For Two String(Returns Integer)
+- nouns(text) : Get A List Of Nouns From String(Returns List Of Sting)
+- EditDist_Dist(t1,t2) : Average Edit Distance Value For Two String And The Average Edit Distance Between The Nouns Present In Them (Returns Float)
+- LCS_Len(a, b) : Longest Common Subsequence(Returns Integer)
+- LCW(t1, t2) : Length Of Longest Common Subsequence(Returns Integer)
