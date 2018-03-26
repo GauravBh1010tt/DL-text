@@ -257,7 +257,7 @@ model.fit([data_inp_l, data_inp_r, all_feat], labels)
 ### Evaluation metrics - MAP, MRR, AP@k, etc.
 The mean average precision (MAP) and mean reciprocal recall (MRR) is computed as:
 ![map-mrr](https://github.com/GauravBh1010tt/DL-text/blob/master/img.JPG)
-In our implementation we assume that the ground truth is arranged starting with the true labels and are followed are false labels.
+In our implementation we assume that the ground truth is arranged starting with the true labels and is/are followed by false labels.
 ```python
 >>> from dl-text import metrics
 >>> pred = [[0,0,1],[0,0,1]] # we have two queries with 3 answers for each; 1 - relevant, 0 - irrelevant
