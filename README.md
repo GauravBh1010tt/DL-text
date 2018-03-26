@@ -134,4 +134,83 @@ data_inp_l, data_inp_r, embedding_matrix = dl.process_data(sent_l = data_l, sent
 model = model_cnn2(dimx = 10, dimy = 10, embedding_matrix = embedding_matrix)
 model.fit([data_inp_l, data_inp_r], labels)
 ```
+### Hand crafted features - These could be used with problems like sentence similarity, question answering, etc. Most of these features are used in the following papers:
+- [External features for community question answering](http://maroo.cs.umass.edu/getpdf.php?id=1281).
+- [Voltron: A Hybrid System For Answer Validation Based On Lexical And Distance Features](http://alt.qcri.org/semeval2015/cdrom/pdf/SemEval043.pdf).
+- [WIKIQA: A Challenge Dataset for Open-Domain Question Answering](https://aclweb.org/anthology/D15-1237).
+#### 1. Computing lexical and semantic features.
+```python
+>>> from dl-text import lex_sem_ft
 
+>>> sent1 = 'i like natural language processing'
+>>> sent2 = 'i like deep learning'
+
+>>> lex_sem_ft.tokenize(sent1) # tokenizing a sentence
+['i', 'like', 'natural', 'language', 'processing']
+
+>>> lex_sem_ft.overlap(sent1,sent2) # number of words common
+2
+```
+Functions currently present in the `lex_sem_ft` are:
+- tokenize(sent): tokenize a given string
+- length(sent) : Number Of Words In A String (Returns Integer)
+- substringCheck(sent1, sent2) : Whether A String Is Subset Of Other (Returns 1 and 0)
+- overlap(sent1, sent2): Number Of Same Words In Two Sentences (Returns Float)
+- overlapSyn(sent1, sent2): Number Of Synonyms In Two Sentences (Returns Float)
+- train_BOW(lst) : Forming Bag Of Words (BOW) (Returns BOW Dictionary)
+- Sum_BOW(sent, dic) : Sum Of BOW Values For A Sent (Returns Float)
+- train_bigram(lst) : Training Bigram Model (Returns Dictionary of Dictionaries)
+- sum_bigram(sent, model) : Total Sum Of Bigram Probablity Of A Sentence (Returns Float)
+- train_trigram(lst): Training Trigram Model (Returns Dictionary of Dictionaries)
+- sum_trigram(sent, model) : Total Sum Of Trigram Probablity Of A Sentence (Returns Float)
+- W2V_train(lst1, lst2) : Word2Vec Training (Returns Vector)
+- W2V_Vec(sent1, sent2, vec) : Returns The Difference Between Word2Vec Sum Of All The Words In Two Sentences (Returns Vec)
+- LDA_train(doc) : Trains LDA Model (Returns Model)
+- LDA(doc1, doc2, lda) : Returns Average Of Probablity Of Word Present In LDA Model For Input Document (Returns Float)
+
+#### 2. Computing text readability features.
+```python
+>>> from dl-text import rd_ft
+
+>>> sent1 = 'i like natural language processing'
+>>> rd_ft.CPW(sent1) # average characters per word
+6.0
+>>> rd_ft.ED('good','great') # edit distance between two words
+4.0
+```
+Functions currently present in the `rd_ft` are:
+- CPW(text) : Average Character Per Word In A Sentence(Returns Float)
+- #Number Of Words Per Sentence(Returns Integer):
+def WPS(text):
+
+#Average Number Of Syllables In Sentence(Returns Float):
+def SPW(text):
+
+#Long Words In A Sentence(Returns Integer):
+def LWPS(text):
+
+#Fraction Of Long Words In A Sentence(Returns Float):
+def LWR(text):
+
+#Number Of Complex Word Per Sentence(Returns Float):
+def CWPS(text):
+
+#Dale-Chall Readability Index(Returns Float):
+def DaleChall(text):
+
+#Edit Distance Value For Two String(Returns Integer):
+def ED(s1, s2):
+
+#Get A List Of Nouns From String(Returns List Of Sting):
+def nouns(text):
+
+#Average Edit Distance Value For Two String And The Average Edit Distance Between The Nouns Present In Them(Returns Float)
+def EditDist_Dist(t1,t2):
+
+def EditDist_Noun(sent_A, sent_B):
+
+#Longest Common Subsequence(Returns Integer):
+def LCS_Len(a, b):
+
+#Length Of Longest Common Subsequence(Returns Integer):
+def LCW(t1, t2):
