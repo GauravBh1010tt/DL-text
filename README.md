@@ -152,7 +152,7 @@ model.fit([data_inp_l, data_inp_r], labels)
 2
 ```
 Functions currently present in the `lex_sem_ft` are:
-- tokenize(sent): tokenize a given string
+- tokenize(sent) : tokenize a given string
 - length(sent) : Number Of Words In A String (Returns Integer)
 - substringCheck(sent1, sent2) : Whether A String Is Subset Of Other (Returns 1 and 0)
 - overlap(sent1, sent2): Number Of Same Words In Two Sentences (Returns Float)
@@ -179,15 +179,15 @@ Functions currently present in the `lex_sem_ft` are:
 4.0
 ```
 Functions currently present in the `rd_ft` are:
-- CPW(text) : Average Character Per Word In A Sentence(Returns Float)
-- WPS(text) : Number Of Words Per Sentence(Returns Integer)
-- SPW(text) : Average Number Of Syllables In Sentence(Returns Float)
-- LWPS(text) : Long Words In A Sentence(Returns Integer)
-- LWR(text) : Fraction Of Long Words In A Sentence(Returns Float)
-- CWPS(text) : Number Of Complex Word Per Sentence(Returns Float)
-- DaleChall(text) : Dale-Chall Readability Index(Returns Float)
-- ED(s1, s2) : Edit Distance Value For Two String(Returns Integer)
-- nouns(text) : Get A List Of Nouns From String(Returns List Of Sting)
-- EditDist_Dist(t1,t2) : Average Edit Distance Value For Two String And The Average Edit Distance Between The Nouns Present In Them (Returns Float)
-- LCS_Len(a, b) : Longest Common Subsequence(Returns Integer)
-- LCW(t1, t2) : Length Of Longest Common Subsequence(Returns Integer)
+- CPW(text) : Average Character Per Word In A Sentence (Returns Float)
+- WPS(text) : Number Of Words Per Sentence (Returns Integer)
+- SPW(text) : Average Number Of Syllables In Sentence (Returns Float)
+- LWPS(text) : Long Words In A Sentence (Returns Integer)
+- LWR(text) : Fraction Of Long Words In A Sentence (Returns Float)
+- CWPS(text) : Number Of Complex Word Per Sentence (Returns Float)
+- DaleChall(text) : Dale-Chall Readability Index (Returns Float)
+- ED(s1, s2) : Edit Distance Value For Two String (Returns Integer)
+- nouns(text) : Get A List Of Nouns From String (Returns List Of Sting)
+- EditDist_Dist(text1,text2) : Average Edit Distance Value For Two String And The Average Edit Distance Between The Nouns Present In Them (Returns Float)
+- LCS_Len(text1, text2) : Longest Common Subsequence (Returns Integer)
+- LCW(text1, text2) : Length Of Longest Common Subsequence (Returns Integer)
