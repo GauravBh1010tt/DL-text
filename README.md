@@ -255,4 +255,29 @@ model.fit([data_inp_l, data_inp_r, all_feat], labels)
 ```
 
 ### Evaluation metrics - MAP, MRR, AP@k, etc.
+The mean average precision (MAP) and mean reciprocal recall (MRR) is computed as:
 ![map-mrr](https://github.com/GauravBh1010tt/DL-text/blob/master/img.JPG)
+In our implementation we assume that the ground truth is arranged starting with the true labels and are followed are false labels.
+```python
+>>> from dl-text import metrics
+>>> pred = [[0,0,1],[0,0,1]] # we have two queries with 3 answers for each; 1 - relevant, 0 - irrelevant
+
+'''Converting the prediction list to dictionary'''
+
+>>> dict1 = {}
+>>> for i,j in enumerate(pred):
+        dict1[i] = j
+        
+>>> metrics.Map(dict1)
+0.33
+>>> metrics.Mrr(dict1)
+33.33
+
+>>> pred = [[0,1,1],[0,1,0]]
+>>> for i,j in enumerate(pred):
+        dict1[i] = j
+>>> metrics.Map(dict1)
+0.5416666666666666
+>>> metrics.Mrr(dict1)
+50.0
+```
