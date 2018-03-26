@@ -5,7 +5,6 @@ This repository consists of modules for pre-processing the textual data. Example
   - [External features for community question answering](http://maroo.cs.umass.edu/getpdf.php?id=1281). 
   - [Voltron: A Hybrid System For Answer Validation Based On Lexical And Distance Features](http://alt.qcri.org/semeval2015/cdrom/pdf/SemEval043.pdf). 
   - [WIKIQA: A Challenge Dataset for Open-Domain Question Answering](https://aclweb.org/anthology/D15-1237).
-
 - Implementation of evaluation metrics such as MAP, MRR, AP@k, BM25 etc.
 
 ### Prepare the data for NLP problems like sentiment analysis.
