@@ -4,7 +4,7 @@ This repository consists of modules for pre-processing the textual data. Example
 - Compute lexical and semantic hand-crafted features like words overlap, n-gram overlap, td-idf, count features, etc.  Most of these features are used in the following papers:
   - [External features for community question answering](http://maroo.cs.umass.edu/getpdf.php?id=1281). 
   - [Voltron: A Hybrid System For Answer Validation Based On Lexical And Distance Features](http://alt.qcri.org/semeval2015/cdrom/pdf/SemEval043.pdf). 
-- Implementation of deep models as described in the following papers:
+- Implementation of deep models as described in the following papers (for reproducible code refer to [DeepLearn-repo](https://github.com/GauravBh1010tt/DeepLearn)):
   - [WIKIQA: A Challenge Dataset for Open-Domain Question Answering](https://aclweb.org/anthology/D15-1237).
   - [Neural-based Approaches for Ranking in Community Question Answering](http://aclweb.org/anthology/S/S16/S16-1128.pdf)
 - Implementation of evaluation metrics such as MAP, MRR, AP@k, BM25 etc.
@@ -193,3 +193,65 @@ Functions currently present in the `rd_ft` are:
 - EditDist_Dist(t1,t2) : Average Edit Distance Value For Two String And The Average Edit Distance Between The Nouns Present In Them (Returns Float)
 - LCS_Len(a, b) : Longest Common Subsequence (Returns Integer)
 - LCW(t1, t2) : Length Of Longest Common Subsequence (Returns Integer)
+
+### Training deep models using textutal sentences and hand features.
+#### 1. Preparing the data
+```python
+from dl-text import dl
+from dl-text import lex_sem_ft
+from dl-text import rd_ft
+
+data_l = ['this is a positive sentence','this is a negative sentence', 
+          'yet another positive sentence', 'the last one is negative']
+data_r = ['positive words are good, better, best, etc.', 'negative words are bad, sad, etc.', 
+          'feeling good', 'sooo depressed.']
+labels = [1,0,1,0]
+
+wordVec_model = dl.loadGloveModel('path_of_the_embeddings/glove.6B.50d.txt')
+
+all_feat = []
+for i,j in zip(data_l, data_r):
+    feat1 = lex_sem_ft.overlap(i, j)
+    feat2 = lex_sem_ft.W2V_Vec(i, j, wordVec_model)
+    feat3 = rd_ft.ED(i, j)
+    feat4 = rd_ft.LCW(i, j)
+    all_feat.append(feat1)
+    all_feat.append(feat2)
+    all_feat.append(feat3)
+    all_feat.append(feat4)
+    
+data_inp_l, data_inp_r, embedding_matrix = dl.process_data(sent_l = data_l, sent_r = data_r, 
+                                                           wordVec_model = wordVec_model, dimx = 10, dimy = 10)
+```
+#### 2. Let's define a model for incorporating external features with deep models.
+
+``` python
+
+def model_cnn_ft(dimx, dimy, dimft, embedding_matrix):
+    inpx = Input(shape=(dimx,),dtype='int32',name='inpx')   
+    embedx = df.word2vec_embedding_layer(embedding_matrix)(inpx)
+    inpy = Input(shape=(dimx,),dtype='int32',name='inpy')   
+    embedy = df.word2vec_embedding_layer(embedding_matrix)(inpy)
+    inpz = Input(shape=(dimft,),dtype='int32',name='inpz')
+    
+    sent_l = Conv1D(nb_filter=3,filter_length=2,activation='relu')(embedx)
+    sent_r = Conv1D(nb_filter=3,filter_length=2,activation='relu')(embedy)
+    pool_l = MaxPooling1D(sent_l)
+    pool_r = MaxPooling1D(sent_r)
+    
+    combine  = merge(mode='concat')([pool_l, pool_r,inpz])
+    flat_embed = Flatten()(combine)
+    nnet_h = Dense(units=10,activation='sigmoid')(flat_embed)
+    nnet_out = Dense(units=2,activation='sigmoid')(nnet_h)
+    model = Model([inpx],nnet_out)
+    model.compile(loss='mse',optimizer='adam')
+    
+    return model
+```
+#### 3. Training the deep model.
+```python
+model = model_cnn_ft(dimx = 10, dimy = 10, dimz = len(all_feat), embedding_matrix = embedding_matrix)
+model.fit([data_inp_l, data_inp_r, all_feat], labels)
+```
+
+### Evaluation metrics - MAP, MRR, AP@k, etc.
