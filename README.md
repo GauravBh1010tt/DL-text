@@ -1,7 +1,14 @@
 # DL-Text : pre-preprocessing modules for deep learning.
 This repository consists of modules for pre-processing the textual data. Examples are also given for training deep models (DNN, CNN, RNN, LSTM). There are many additional functionilities which are as follows:
 - Preparing data for problems like sentiment analysis, sentence contextual similarity, question answering, etc.
-- Compute lexical and semantic hand-crafted features like words overlap, n-gram overlap, td-idf, count features, etc.
+- Compute lexical and semantic hand-crafted features like words overlap, n-gram overlap, td-idf, count features, etc.  Most of these features are used in the following papers:
+
+ [External features for community question answering](http://maroo.cs.umass.edu/getpdf.php?id=1281). 
+ 
+ [Voltron: A Hybrid System For Answer Validation Based On Lexical And Distance Features](http://alt.qcri.org/semeval2015/cdrom/pdf/SemEval043.pdf). 
+ 
+ [WIKIQA: A Challenge Dataset for Open-Domain Question Answering](https://aclweb.org/anthology/D15-1237).
+
 - Implementation of evaluation metrics such as MAP, MRR, AP@k, BM25 etc.
 
 ### Prepare the data for NLP problems like sentiment analysis.
@@ -134,10 +141,7 @@ data_inp_l, data_inp_r, embedding_matrix = dl.process_data(sent_l = data_l, sent
 model = model_cnn2(dimx = 10, dimy = 10, embedding_matrix = embedding_matrix)
 model.fit([data_inp_l, data_inp_r], labels)
 ```
-### Hand crafted features - These could be used with problems like sentence similarity, question answering, etc. Most of these features are used in the following papers:
-- [External features for community question answering](http://maroo.cs.umass.edu/getpdf.php?id=1281).
-- [Voltron: A Hybrid System For Answer Validation Based On Lexical And Distance Features](http://alt.qcri.org/semeval2015/cdrom/pdf/SemEval043.pdf).
-- [WIKIQA: A Challenge Dataset for Open-Domain Question Answering](https://aclweb.org/anthology/D15-1237).
+### Hand crafted features - These could be used with problems like sentence similarity, question answering, etc. 
 #### 1. Computing lexical and semantic features.
 ```python
 >>> from dl-text import lex_sem_ft
@@ -152,7 +156,7 @@ model.fit([data_inp_l, data_inp_r], labels)
 2
 ```
 Functions currently present in the `lex_sem_ft` are:
-- tokenize(sent) : tokenize a given string
+- tokenize(sent): tokenize a given string
 - length(sent) : Number Of Words In A String (Returns Integer)
 - substringCheck(sent1, sent2) : Whether A String Is Subset Of Other (Returns 1 and 0)
 - overlap(sent1, sent2): Number Of Same Words In Two Sentences (Returns Float)
@@ -188,6 +192,6 @@ Functions currently present in the `rd_ft` are:
 - DaleChall(text) : Dale-Chall Readability Index (Returns Float)
 - ED(s1, s2) : Edit Distance Value For Two String (Returns Integer)
 - nouns(text) : Get A List Of Nouns From String (Returns List Of Sting)
-- EditDist_Dist(text1,text2) : Average Edit Distance Value For Two String And The Average Edit Distance Between The Nouns Present In Them (Returns Float)
-- LCS_Len(text1, text2) : Longest Common Subsequence (Returns Integer)
-- LCW(text1, text2) : Length Of Longest Common Subsequence (Returns Integer)
+- EditDist_Dist(t1,t2) : Average Edit Distance Value For Two String And The Average Edit Distance Between The Nouns Present In Them (Returns Float)
+- LCS_Len(a, b) : Longest Common Subsequence (Returns Integer)
+- LCW(t1, t2) : Length Of Longest Common Subsequence (Returns Integer)
