@@ -255,3 +255,4 @@ model.fit([data_inp_l, data_inp_r, all_feat], labels)
 ```
 
 ### Evaluation metrics - MAP, MRR, AP@k, etc.
+![map-mrr](https://github.com/GauravBh1010tt/DL-text/blob/master/img.JPG)
