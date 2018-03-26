@@ -1,13 +1,13 @@
 # DL-Text : pre-preprocessing modules for deep learning.
-This repository consists of modules for pre-processing the textual data. There are many additional functionilities which are as follows:
+This repository consists of modules for pre-processing the textual data. Examples are also given for training deep models (DNN, CNN, RNN, LSTM). There are many additional functionilities which are as follows:
 - Preparing data for problems like sentiment analysis, sentence contextual similarity, question answering, etc.
 - Compute lexical and semantic hand-crafted features like words overlap, n-gram overlap, td-idf, count features, etc.
 - Implementation of evaluation metrics such as MAP, MRR, AP@k, BM25 etc.
 
-### Usage - Prepare the data for training a deep model (DNN, CNN, RNN, LSTM).
+### Prepare the data for NLP problems like sentiment analysis.
 #### 1. The data and labels looks like this:
 ```python
-data = ['this is a positve sentence','this is a negative sentence',
+data = ['this is a positive sentence','this is a negative sentence',
         'yet another positve sentence','the last one is negative']
 labels = [1,0,1,0]
 ```
@@ -86,8 +86,8 @@ model.fit(data_inp, labels)
 model = model_cnn(dimx = 10, embedding_matrix = embedding_matrix)
 model.fit(data_inp, labels)
 ```
-
-#### 5. Creating two channel models
+### Prepare the data for NLP problems like computing sentence similarity, question answering, etc.
+#### 1. Creating two channel models
 These type of models use two data streams. This can be used to NLP tasks such as question answering, sentence similarity computation, etc. The data looks like this
 
 ```python
@@ -124,7 +124,7 @@ def model_cnn2(dimx, dimy, embedding_matrix):
     
     return model
 ```
-#### 6. Tarining a two channel deep model
+#### 2. Tarining a two channel deep model
 
 ```python
 
