@@ -47,11 +47,11 @@ def clean(text):
 def tokenize(sent):
     return [x.strip() for x in re.split('(\W+)?', sent) if x.strip()]
 
-def process_data(sent_Q,sent_A=None,wordVec_model=None,dimx=100,dimy=100,vocab_size=10000,embedding_dim=300):
+def process_data(sent_l,sent_r=None,wordVec_model=None,dimx=100,dimy=100,vocab_size=10000,embedding_dim=300):
     sent1 = []
-    sent1.extend(sent_Q)
-    if sent_A:
-        sent1.extend(sent_A)
+    sent1.extend(sent_l)
+    if sent_r:
+        sent1.extend(sent_r)
 #    sent1 = [' '.join(i) for i in sent1]
     sentence = ["%s %s %s" % (START,x,END) for x in sent1]
     tokenize_sent = [regexp_tokenize(x, 
@@ -69,7 +69,7 @@ def process_data(sent_Q,sent_A=None,wordVec_model=None,dimx=100,dimy=100,vocab_s
     for i,sent in enumerate(tokenize_sent):
         tokenize_sent[i] = [w if w in word_to_index else unk_token for w in sent]
     
-    len_train = len(sent_Q)
+    len_train = len(sent_l)
     text=[]
     for i in tokenize_sent:
         text.extend(i)
@@ -93,7 +93,7 @@ def process_data(sent_Q,sent_A=None,wordVec_model=None,dimx=100,dimy=100,vocab_s
     
     X_data = np.array(X_data)
     
-    if sent_A:
+    if sent_r:
         for sent in tokenize_sent[len_train:]:
             temp = [START for i in range(dimy)]
             for ind,word in enumerate(sent[0:dimy]):
@@ -125,9 +125,9 @@ def process_data(sent_Q,sent_A=None,wordVec_model=None,dimx=100,dimy=100,vocab_s
     
     
     
-    if sent_A and wordVec_model:
+    if sent_r and wordVec_model:
         return X_data,y_data,embedding_matrix
-    elif sent_A:
+    elif sent_r:
         return X_data,y_data
     elif wordVec_model:
         return X_data,embedding_matrix
