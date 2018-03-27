@@ -9,6 +9,12 @@ This repository consists of modules for pre-processing the textual data. Example
   - [Neural-based Approaches for Ranking in Community Question Answering](http://aclweb.org/anthology/S/S16/S16-1128.pdf)
 - Implementation of evaluation metrics such as MAP, MRR, AP@k, BM25 etc.
 
+## Dependencies
+#### The required dependencies are mentioned in requirement.txt. You can install them manually or by using the following command:
+```python
+$ pip install -r requirements.txt
+```
+
 ## Prepare the data for NLP problems like sentiment analysis.
 #### 1. The data and labels looks like this:
 ```python
