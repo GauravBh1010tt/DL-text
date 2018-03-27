@@ -18,7 +18,7 @@ labels = [1,0,1,0]
 ```
 This type of data is commonly used in sentiment analysis type problems.
 ```python
-import dl
+from dl_text import dl
 data_inp = dl.process_data(sent_l = data, dimx = 10)
 ```
 The `process_data` function preprocesses the data that can be used with deep models. The `process_data` has following parameters:
@@ -36,7 +36,7 @@ where,
 
 #### 2. Using pre-trained word vector embeddings
 ```python
-import dl
+from dl_text import dl
 import gensim
 
 # for 50-dim glove embeddings use:
@@ -52,7 +52,7 @@ data_inp, embedding_matrix = dl.process_data(sent_l = data, wordVec_model = word
 #### 3. Defining deep models
 
 ```python
-import dl
+from dl_text import dl
 from keras.layers import Input, Dense, Dropout, Merge, Conv1D, Lambda, Flatten, MaxPooling1D
 
 def model_dnn(dimx, embedding_matrix):
@@ -142,7 +142,7 @@ model.fit([data_inp_l, data_inp_r], labels)
 ## Hand crafted features - These could be used with problems like sentence similarity, question answering, etc. 
 #### 1. Computing lexical and semantic features.
 ```python
->>> from dl-text import lex_sem_ft
+>>> from dl_text import lex_sem_ft
 
 >>> sent1 = 'i like natural language processing'
 >>> sent2 = 'i like deep learning'
@@ -172,7 +172,7 @@ Functions currently present in the `lex_sem_ft` are:
 
 #### 2. Computing text readability features.
 ```python
->>> from dl-text import rd_ft
+>>> from dl_text import rd_ft
 
 >>> sent1 = 'i like natural language processing'
 >>> rd_ft.CPW(sent1) # average characters per word
@@ -197,9 +197,9 @@ Functions currently present in the `rd_ft` are:
 ## Training deep models using textutal sentences and hand features.
 #### 1. Preparing the data
 ```python
-from dl-text import dl
-from dl-text import lex_sem_ft
-from dl-text import rd_ft
+from dl_text import dl
+from dl_text import lex_sem_ft
+from dl_text import rd_ft
 
 data_l = ['this is a positive sentence','this is a negative sentence', 
           'yet another positive sentence', 'the last one is negative']
@@ -259,7 +259,7 @@ The mean average precision (MAP) and mean reciprocal recall (MRR) is computed as
 ![map-mrr](https://github.com/GauravBh1010tt/DL-text/blob/master/img.JPG)
 In our implementation we assume that the ground truth is arranged starting with the true labels and is/are followed by false labels.
 ```python
->>> from dl-text import metrics
+>>> from dl_text import metrics
 >>> pred = [[0,0,1],[0,0,1]] # we have two queries with 3 answers for each; 1 - relevant, 0 - irrelevant
 
 '''Converting the prediction list to dictionary'''
