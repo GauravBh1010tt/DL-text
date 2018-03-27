@@ -1,6 +1,6 @@
 # DL-Text : pre-preprocessing modules for deep learning.
 This repository consists of modules for pre-processing the textual data. Examples are also given for training deep models (DNN, CNN, RNN, LSTM). There are many additional functionilities which are as follows:
-- Preparing data for problems like sentiment analysis, sentence contextual similarity, question answering, etc.
+- Preparing data for problems like sentiment analysis, sentence contextual similarity, question answering, machine translation, etc.
 - Compute lexical and semantic hand-crafted features like words overlap, n-gram overlap, td-idf, count features, etc.  Most of these features are used in the following papers:
   - [External features for community question answering](http://maroo.cs.umass.edu/getpdf.php?id=1281). 
   - [Voltron: A Hybrid System For Answer Validation Based On Lexical And Distance Features](http://alt.qcri.org/semeval2015/cdrom/pdf/SemEval043.pdf). 
