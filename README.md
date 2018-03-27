@@ -9,7 +9,7 @@ This repository consists of modules for pre-processing the textual data. Example
   - [Neural-based Approaches for Ranking in Community Question Answering](http://aclweb.org/anthology/S/S16/S16-1128.pdf)
 - Implementation of evaluation metrics such as MAP, MRR, AP@k, BM25 etc.
 
-### Prepare the data for NLP problems like sentiment analysis.
+## Prepare the data for NLP problems like sentiment analysis.
 #### 1. The data and labels looks like this:
 ```python
 data = ['this is a positive sentence','this is a negative sentence',
@@ -91,7 +91,7 @@ model.fit(data_inp, labels)
 model = model_cnn(dimx = 10, embedding_matrix = embedding_matrix)
 model.fit(data_inp, labels)
 ```
-### Prepare the data for NLP problems like computing sentence similarity, question answering, etc.
+## Prepare the data for NLP problems like computing sentence similarity, question answering, etc.
 #### 1. Creating two channel models
 These type of models use two data streams. This can be used to NLP tasks such as question answering, sentence similarity computation, etc. The data looks like this
 
@@ -139,7 +139,7 @@ data_inp_l, data_inp_r, embedding_matrix = dl.process_data(sent_l = data_l, sent
 model = model_cnn2(dimx = 10, dimy = 10, embedding_matrix = embedding_matrix)
 model.fit([data_inp_l, data_inp_r], labels)
 ```
-### Hand crafted features - These could be used with problems like sentence similarity, question answering, etc. 
+## Hand crafted features - These could be used with problems like sentence similarity, question answering, etc. 
 #### 1. Computing lexical and semantic features.
 ```python
 >>> from dl-text import lex_sem_ft
@@ -194,7 +194,7 @@ Functions currently present in the `rd_ft` are:
 - LCS_Len(a, b) : Longest Common Subsequence (Returns Integer)
 - LCW(t1, t2) : Length Of Longest Common Subsequence (Returns Integer)
 
-### Training deep models using textutal sentences and hand features.
+## Training deep models using textutal sentences and hand features.
 #### 1. Preparing the data
 ```python
 from dl-text import dl
@@ -254,7 +254,7 @@ model = model_cnn_ft(dimx = 10, dimy = 10, dimz = len(all_feat), embedding_matri
 model.fit([data_inp_l, data_inp_r, all_feat], labels)
 ```
 
-### Evaluation metrics - MAP, MRR, AP@k, etc.
+## Evaluation metrics - MAP, MRR, AP@k, etc.
 The mean average precision (MAP) and mean reciprocal recall (MRR) is computed as:
 ![map-mrr](https://github.com/GauravBh1010tt/DL-text/blob/master/img.JPG)
 In our implementation we assume that the ground truth is arranged starting with the true labels and is/are followed by false labels.
