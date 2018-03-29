@@ -31,7 +31,8 @@ for sent in raw_data:
     data.append(dl.clean(sent))
     
 print data
-['this is a positive sentence', 'this is a negative sentence', 'yet another positve sentence', 'the last one is negative']
+['this is a positive sentence', 'this is a negative sentence', 
+'yet another positve sentence', 'the last one is negative']
 ```
 Once the raw data is cleaned, the next step is the prepare that can be passed to the deep models. Use the following function:
 ```python
