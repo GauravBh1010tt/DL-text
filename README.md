@@ -19,15 +19,25 @@ $ pip install -r requirements.txt
 ## Prepare the data for NLP problems like sentiment analysis.
 #### 1. The data and labels looks like this:
 ```python
-data = ['this is a positive sentence','this is a negative sentence',
-        'yet another positve sentence','the last one is negative']
+raw_data = ['this,,, is$$ a positive ..sentence','this is a ((*negative ,,@sentence',
+        'yet another..'' positve$$ sentence','the last one is ...,negative']
 labels = [1,0,1,0]
 ```
-This type of data is commonly used in sentiment analysis type problems.
+This type of data is commonly used in sentiment analysis type problems. The first step is to clean the data:
 ```python
 from dl_text import dl
+data = []
+for sent in raw_data:
+    data.append(dl.clean(sent))
+    
+print data
+['this is a positive sentence', 'this is a negative sentence', 'yet another positve sentence', 'the last one is negative']
+```
+Once the raw data is cleaned, the next step is the prepare that can be passed to the deep models. Use the following function:
+```python
 data_inp = dl.process_data(sent_l = data, dimx = 10)
 ```
+
 The `process_data` function preprocesses the data that can be used with deep models. The `process_data` has following parameters:
 ```python
 process_data(sent_l,sent_r,wordVec_model,dimx,dimy,vocab_size,embedding_dim)
