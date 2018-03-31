@@ -1,4 +1,4 @@
-# DL-Text : pre-processing modules for deep learning.
+# DL-Text : pre-processing modules for deep learning (Keras, tensorflow).
 This repository consists of modules for pre-processing the textual data. Examples are also given for training deep models (DNN, CNN, RNN, LSTM). There are many additional functionilities which are as follows:
 - Preparing data for problems like sentiment analysis, sentence contextual similarity, question answering, machine translation, etc.
 - Compute lexical and semantic hand-crafted features like words overlap, n-gram overlap, td-idf, count features, etc.  Most of these features are used in the following papers:
