@@ -75,7 +75,7 @@ from keras.layers import Input, Dense, Dropout, Merge, Conv1D, Lambda, Flatten, 
 
 def model_dnn(dimx, embedding_matrix):
     inpx = Input(shape=(dimx,),dtype='int32',name='inpx')   
-    embed = df.word2vec_embedding_layer(embedding_matrix)(inpx)
+    embed = dl.word2vec_embedding_layer(embedding_matrix)(inpx)
     flat_embed = Flatten()(embed)
     nnet_h = Dense(units=10,activation='sigmoid')(flat_embed)
     nnet_out = Dense(units=2,activation='sigmoid')(nnet_h)
@@ -85,7 +85,7 @@ def model_dnn(dimx, embedding_matrix):
 
 def model_cnn(dimx, embedding_matrix):
     inpx = Input(shape=(dimx,),dtype='int32',name='inpx')   
-    embed = df.word2vec_embedding_layer(embedding_matrix)(inpx)
+    embed = dl.word2vec_embedding_layer(embedding_matrix)(inpx)
     sent = Conv1D(nb_filter=3,filter_length=2,activation='relu')(embed)
     pool = MaxPooling1D(sent)
     flat_embed = Flatten()(pool)
@@ -129,9 +129,9 @@ Let's define a model for the these type of tasks
 
 def model_cnn2(dimx, dimy, embedding_matrix):
     inpx = Input(shape=(dimx,),dtype='int32',name='inpx')   
-    embedx = df.word2vec_embedding_layer(embedding_matrix)(inpx)
+    embedx = dl.word2vec_embedding_layer(embedding_matrix)(inpx)
     inpy = Input(shape=(dimx,),dtype='int32',name='inpy')   
-    embedy = df.word2vec_embedding_layer(embedding_matrix)(inpy)
+    embedy = dl.word2vec_embedding_layer(embedding_matrix)(inpy)
     
     sent_l = Conv1D(nb_filter=3,filter_length=2,activation='relu')(embedx)
     sent_r = Conv1D(nb_filter=3,filter_length=2,activation='relu')(embedy)
@@ -247,9 +247,9 @@ data_inp_l, data_inp_r, embedding_matrix = dl.process_data(sent_l = data_l, sent
 
 def model_cnn_ft(dimx, dimy, dimft, embedding_matrix):
     inpx = Input(shape=(dimx,),dtype='int32',name='inpx')   
-    embedx = df.word2vec_embedding_layer(embedding_matrix)(inpx)
+    embedx = dl.word2vec_embedding_layer(embedding_matrix)(inpx)
     inpy = Input(shape=(dimx,),dtype='int32',name='inpy')   
-    embedy = df.word2vec_embedding_layer(embedding_matrix)(inpy)
+    embedy = dl.word2vec_embedding_layer(embedding_matrix)(inpy)
     inpz = Input(shape=(dimft,),dtype='int32',name='inpz')
     
     sent_l = Conv1D(nb_filter=3,filter_length=2,activation='relu')(embedx)
