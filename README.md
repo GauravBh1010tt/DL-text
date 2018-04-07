@@ -20,7 +20,7 @@ $ pip install -r requirements.txt
 #### 1. The data and labels looks like this:
 ```python
 raw_data = ['this,,, is$$ a positive ..sentence','this is a ((*negative ,,@sentence',
-        'yet another..'' positve$$ sentence','the last one is ...,negative']
+        'yet another..'' positive$$ sentence','the last one is ...,negative']
 labels = [1,0,1,0]
 ```
 This type of data is commonly used in sentiment analysis type problems. The first step is to clean the data:
@@ -32,7 +32,7 @@ for sent in raw_data:
     
 print data
 ['this is a positive sentence', 'this is a negative sentence', 
-'yet another positve sentence', 'the last one is negative']
+'yet another positive sentence', 'the last one is negative']
 ```
 Once the raw data is cleaned, the next step is the prepare that can be passed to the deep models. Use the following function:
 ```python
