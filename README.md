@@ -87,7 +87,7 @@ def model_cnn(dimx, embedding_matrix):
     inpx = Input(shape=(dimx,),dtype='int32',name='inpx')   
     embed = dl.word2vec_embedding_layer(embedding_matrix)(inpx)
     sent = Conv1D(nb_filter=3,filter_length=2,activation='relu')(embed)
-    pool = MaxPooling1D(sent)
+    pool = MaxPooling1D()(sent)
     flat_embed = Flatten()(pool)
     nnet_h = Dense(units=10,activation='sigmoid')(flat_embed)
     nnet_out = Dense(units=2,activation='sigmoid')(nnet_h)
@@ -135,8 +135,8 @@ def model_cnn2(dimx, dimy, embedding_matrix):
     
     sent_l = Conv1D(nb_filter=3,filter_length=2,activation='relu')(embedx)
     sent_r = Conv1D(nb_filter=3,filter_length=2,activation='relu')(embedy)
-    pool_l = MaxPooling1D(sent_l)
-    pool_r = MaxPooling1D(sent_r)
+    pool_l = MaxPooling1D()(sent_l)
+    pool_r = MaxPooling1D()(sent_r)
     
     combine  = merge(mode='concat')([pool_l, pool_r])
     flat_embed = Flatten()(combine)
@@ -254,8 +254,8 @@ def model_cnn_ft(dimx, dimy, dimft, embedding_matrix):
     
     sent_l = Conv1D(nb_filter=3,filter_length=2,activation='relu')(embedx)
     sent_r = Conv1D(nb_filter=3,filter_length=2,activation='relu')(embedy)
-    pool_l = MaxPooling1D(sent_l)
-    pool_r = MaxPooling1D(sent_r)
+    pool_l = MaxPooling1D()(sent_l)
+    pool_r = MaxPooling1D()(sent_r)
     
     combine  = merge(mode='concat')([pool_l, pool_r,inpz])
     flat_embed = Flatten()(combine)
