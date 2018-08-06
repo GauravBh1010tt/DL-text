@@ -48,7 +48,7 @@ def clean(text):
     text = re.sub(r"e - mail", "email", text)
     text = re.sub(r"j k", "jk", text)
     text = re.sub(r"\s{2,}", " ", text)
-    return text
+    return text.lower()
 
 def tokenize(sent):
     return [x.strip() for x in re.split('(\W+)?', sent) if x.strip()]
@@ -65,7 +65,7 @@ def process_data(sent_l,sent_r=None,wordVec_model=None,dimx=100,dimy=100,vocab_s
     
     
     freq = FreqDist(chain(*tokenize_sent))
-    print 'found ',len(freq),' unique words'
+    print ('found ',len(freq),' unique words')
     vocab = freq.most_common(vocab_size - 1)
     index_to_word = [x[0] for x in vocab]
     index_to_word.append(unk_token)
@@ -84,7 +84,7 @@ def process_data(sent_l,sent_r=None,wordVec_model=None,dimx=100,dimy=100,vocab_s
     sentences_y = []
     
     for sent in tokenize_sent[0:len_train]:
-        temp = [START for i in range(dimx)]
+        temp = [END for i in range(dimx)]
         for ind,word in enumerate(sent[0:dimx]):
             temp[ind] = word
         sentences_x.append(temp)
@@ -101,7 +101,7 @@ def process_data(sent_l,sent_r=None,wordVec_model=None,dimx=100,dimy=100,vocab_s
     
     if sent_r:
         for sent in tokenize_sent[len_train:]:
-            temp = [START for i in range(dimy)]
+            temp = [END for i in range(dimy)]
             for ind,word in enumerate(sent[0:dimy]):
                 temp[ind] = word       
             sentences_y.append(temp)
@@ -127,8 +127,8 @@ def process_data(sent_l,sent_r=None,wordVec_model=None,dimx=100,dimy=100,vocab_s
                 #print j
                 unk.append(j)
                 continue
-        print 'number of unkown words: ',len(unk)
-        print 'some unknown words ',unk[0:5]
+        print ('number of unkown words: ',len(unk))
+        print ('some unknown words ',unk[0:5])
     
     
     
@@ -137,9 +137,9 @@ def process_data(sent_l,sent_r=None,wordVec_model=None,dimx=100,dimy=100,vocab_s
     elif sent_r:
         return X_data,y_data
     elif wordVec_model:
-        return X_data,embedding_matrix
+        return X_data,embedding_matrix,index_to_word
     else:
-        return X_data
+        return X_data,index_to_word
 
 def prepare_train_test(data_l,data_r,train_len,test_len):
     
@@ -158,16 +158,17 @@ def word2vec_embedding_layer(embedding_matrix,train=False):
     return layer
 
 def loadGloveModel(glovefile):
-    print 'Loading Glove File.....'
+    print ('Loading Glove File.....')
     f = open(glovefile)
     model = {}
+
     for line in f:
         splitline = line.split()
         word = splitline[0]
         embedding = np.array([float(val) for val in splitline[1:]])
         model[word] = embedding
-    print 'Loaded Word2Vec GloVe Model.....'
-    print len(model), ' words loaded.....'
+    print ('Loaded Word2Vec GloVe Model.....')
+    print (len(model), ' words loaded.....')
     return model
 
 def encode_labels(labels, nclass=5):
